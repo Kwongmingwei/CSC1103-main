@@ -1,0 +1,49 @@
+This program is a Tic-Tac-Toe game developed using Raylib, a simple and easy-to-use library for game development in C. Here’s a high-level overview of how the program works:
+
+Program Overview
+The Tic-Tac-Toe game allows players to choose between single-player mode (against an AI with adjustable difficulty) and two-player mode. The interface includes a main menu, a difficulty selection screen (for single-player), and the game screen itself where the Tic-Tac-Toe board is displayed. Sounds and visuals are included to enhance the experience.
+
+1. (Main Function and Game Initialization):
+
+The main() function initializes the game window and audio device, loads game textures (such as icons for "X" and "O"), and loads sounds for various actions (like startup, move, draw, and win sounds).
+After setup, it enters the main game loop where it checks if the window should remain open. The loop repeatedly draws the appropriate screen (e.g., main menu, difficulty selection, or gameplay) until the player exits.
+
+2. (Game Screens):
+
+The program has three main screens, each with its own layout and functionality:
+Main Menu (MENU): Displays buttons for choosing single-player or two-player mode and an exit button to close the game.
+Difficulty Selection (DIFFICULTY): Allows players to pick a difficulty level (Easy, Medium, Hard) for the AI if they choose single-player mode.
+Gameplay Screen (PLAY): Displays the Tic-Tac-Toe grid, keeps track of moves, and allows players to make moves by clicking on cells. After each move, the program checks if there's a win, a tie, or if the game should continue.
+
+3. (Grid and Cell Management):
+
+The grid is represented as a 2D array of Cell structures, where each cell can hold a value of EMPTY, X, or O. X and O represent the two players’ marks.
+Functions like GridInit initialize the grid to an empty state at the start of each game, and CellMark checks if a cell can be marked and assigns a player’s mark if the cell is empty.
+
+4. (Game States and Turn Management):
+
+The game uses GameState and GameScreen enums to keep track of the current screen (menu, play, or difficulty) and the current turn (PLAYERX or PLAYERO).
+Player 1 (PLAYERX) is assigned the "X" mark, and Player 2 (PLAYERO) is assigned the "O" mark. The game alternates turns, and in single-player mode, the AI takes a turn on behalf of Player 2.
+
+5. (AI and Difficulty Levels):
+
+In single-player mode, an AI makes moves based on the selected difficulty level:
+Easy: AI makes random moves.
+Medium: AI uses the Minimax algorithm with a limited depth to make moderately challenging moves.
+Hard: AI uses the full Minimax algorithm, which attempts to make the optimal move for a more difficult challenge.
+
+6. (Game End Conditions):
+
+After each move, the program checks if there is a win or tie condition:
+Win: A player wins if they have three marks in a row, either horizontally, vertically, or diagonally. The game displays a message declaring the winner.
+Tie: If all cells are filled and no one has won, the game declares a tie.
+
+7. (Score Display and Reset Options):
+
+At the bottom of the gameplay screen, scores for Player 1, Player 2, and ties are displayed.
+Players can press the "R" key to restart a game or the "ESC" key to return to the main menu.
+
+8. (Cleanup and Exiting):
+
+When the player closes the game, the program unloads all textures, sounds, and other resources to free up memory and properly close the audio and game window.
+
